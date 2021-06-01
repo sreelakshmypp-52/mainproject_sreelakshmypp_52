@@ -1,0 +1,46 @@
+from tkinter import *
+from tkinter import filedialog
+from tkinter import *
+from tkinter import filedialog
+from PIL import ImageTk,Image
+from tkinter import filedialog
+
+#master = Tk()
+
+root = Tk()
+
+root.title("multilingual translation")
+root.geometry("800x500")
+root.configure(bg="LightSteelBlue2")
+
+
+
+def open():
+    global my_image
+    root.filename = filedialog.askopenfilename(initialdir="/GUI/images",title="select image",filetypes=(("png iles","*.png"),("jpg files","*.jpg"),("all files","*.*")))
+    my_label=Label(root,text=root.filename).pack()
+    my_image=ImageTk.PhotoImage(Image.open(root.filename)) 
+    my_image_label=Label(image=my_image).pack()
+
+button = Button(root, text='BROWSE', command=open
+                ,bg='white',fg="black" ,width=10 ,height=1)
+
+button.pack()
+button.place(x=50, y=100)
+
+button = Button(
+    text="SPELLCHECK",
+    width=20,
+    height=2,
+    bg='medium aquamarine',
+    fg="black",
+)
+button.place(x=300, y=350)
+
+
+button = Button(text="SPEECH", width=20,  height=2,fg="black",bg='medium aquamarine')
+button.place(x=300, y=450)
+
+
+root.mainloop()
+
