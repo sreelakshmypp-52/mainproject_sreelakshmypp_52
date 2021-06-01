@@ -1,0 +1,76 @@
+
+from tkinter import *
+from textblob import TextBlob
+
+
+
+def clearAll() :
+	
+	
+	word1_field.delete(0, END)
+	word2_field.delete(0, END)
+
+
+def correction() :
+
+	
+	input_word = word1_field.get()
+
+	
+	blob_obj = TextBlob(input_word)
+
+	
+	corrected_word = str(blob_obj.correct())
+
+	
+	word2_field.insert(10, corrected_word)
+
+
+
+if __name__ == "__main__" :
+
+	
+	root = Tk()
+
+	root.configure(bg="LightSteelBlue2")
+
+	root.geometry("800x500")
+
+	
+	root.title("Spell Corrector")
+	
+	
+	label1 = Label(root, text = "Text",
+				fg = 'black', bg = 'medium aquamarine')
+		
+	
+	label2 = Label(root, text = "Corrected Text",
+				fg = 'black', bg = 'medium aquamarine')
+	
+	
+	label1.grid(row = 1, column = 0)
+	label2.grid(row = 7, column = 0, padx = 50)
+
+		
+	
+	word1_field = Entry()
+	word2_field = Entry()
+		
+	
+	word1_field.grid(row = 1, column = 1, padx = 60, pady = 30)
+	word2_field.grid(row = 7, column = 1, padx = 60, pady = 90)
+
+	
+	button1 = Button(root, text = "SPELL CHECK", bg = "medium aquamarine", fg = "blue",
+								command = correction)
+		
+	button1.grid(row = 2, column = 1)
+	
+	
+	button2 = Button(root, text = "Clear", bg = "medium aquamarine",
+					fg = "blue", command = clearAll)
+	
+	button2.grid(row = 8, column = 1)
+	
+	
+	root.mainloop()
