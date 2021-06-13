@@ -1,0 +1,60 @@
+from tkinter import *
+from tkinter import filedialog
+from tkinter import *
+from tkinter import filedialog
+from PIL import ImageTk,Image
+from tkinter import filedialog
+
+#master = Tk()
+import tkinter as tk
+from tkinter import ttk
+root = tk.Tk()
+
+root.title("multilingual translation")
+root.geometry("800x500")
+root.configure(bg="snow3")
+
+
+button = Button(
+    text="Speech Converter",
+    width=25,
+    height=2,
+    bg='snow3',
+    fg="black",
+)
+button.place(x=50, y=100)
+border_color = Frame(root, background="red3")
+  
+label = Label(border_color, text="This is a Label widget", bd=0,width=30,  height=8)
+  
+
+label.pack(padx=1,pady=1)
+border_color.pack(padx=25, pady=75)
+
+def month_changed(event):
+    msg = f'You selected {month_cb.get()}!'
+    showinfo(title='Result', message=msg)
+
+
+months = ('German', 'English', 'Latin','Turkish','Italin','Malay','French')
+
+
+selected_month = tk.StringVar()
+
+month_cb = ttk.Combobox(root, textvariable=selected_month)
+month_cb['values'] = months
+month_cb['state'] = 'readonly'  
+month_cb.pack( padx=5, pady=5)
+
+month_cb.bind('<<ComboboxSelected>>', month_changed)
+
+button = Button(
+    text="Speech Converter",
+    width=15,
+    height=2,
+    bg='red3',
+    fg="black",
+)
+button.place(x=350, y=350)
+root.mainloop()
+
